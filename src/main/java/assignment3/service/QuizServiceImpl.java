@@ -31,6 +31,12 @@ public class QuizServiceImpl implements QuizService {
 
     @Override
     @Transactional
+    public List<Quiz_question> getQuizByTitle(String quiztitle)
+    {
+        return quizDAO.getQuizByTitle(quiztitle);
+    }
+    @Override
+    @Transactional
     public List<Quiz> getAllQuizzes() {
         return quizDAO.getAllQuizzes();
     }

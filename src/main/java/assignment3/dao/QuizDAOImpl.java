@@ -15,6 +15,7 @@ import assignment3.model.Quiz_question;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -61,6 +62,20 @@ public class QuizDAOImpl implements QuizDAO{
         session.getTransaction().commit();
         session.close();
                
+    }
+    
+    @Override
+    public List<Quiz_question> getQuizByTitle(String quiztitle)
+    {
+        List<Quiz> quizzes;
+        List<Quiz_question> questions;
+        
+        Query query = sessionFactory.openSession().createQuery("Select questions FROM Quiz where title = :quiztitle");
+        query.setParameter("quiztitle", quiztitle);
+        questions = query.list();
+        
+        return questions;
+        
     }
     
     @SuppressWarnings("unchecked")
