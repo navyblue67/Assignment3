@@ -18,6 +18,6 @@ public interface QuizDAO {
     public void addQuiz(Quiz quiz);
     public List<Quiz> getAllQuizzes();
     public void addQuestions(Quiz quiz, List<Quiz_question> question);
-    //public Quiz getQuizByID(int quizid);
+    public List<Quiz_question> getQuizByTitle(String quiztitle);
     
 }

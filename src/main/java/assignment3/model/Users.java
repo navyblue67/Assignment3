@@ -18,7 +18,8 @@ import javax.persistence.*;
 public class Users implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @Column(name = "user_id")
+    private int user_id;
     private String Username;
     private String Password;
     private String Type;
@@ -50,12 +51,14 @@ public class Users implements Serializable{
         this.Password = Password;
     }
 
-    public int getId() {
-        return id;
+    public int getUser_id() {
+        return user_id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
     }
+
+   
     
 }

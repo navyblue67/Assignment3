@@ -47,13 +47,7 @@ public class UserController {
     private QuestService question;
     
     
-    /*@RequestMapping(value = "/")
-    public ModelAndView listUser(ModelAndView model) throws IOException {
-		List<Users> listUsers = userService.getAllUsers();
-		model.addObject("listUsers", listUsers);
-		model.setViewName("home");
-		return model;
-	}*/
+    
     @RequestMapping(value = "/")
     @ResponseBody
     public List<Users> listUser() throws IOException {
@@ -67,26 +61,21 @@ public class UserController {
         List<Quiz> listQuiz = quizService.getAllQuizzes();
         return listQuiz;
     }
+    
+    @RequestMapping(value = "/getquiz", method = RequestMethod.GET)
+    @ResponseBody
+    public List<Quiz_question> getQuiz (@RequestParam(value = "title") String title) {
+        List<Quiz_question> questions = quizService.getQuizByTitle(title);
+        return questions;
+        
+        
+    }
 
     
-    @RequestMapping(value = "/newUser", method = RequestMethod.GET)
-    public ModelAndView newUser(ModelAndView model) {
-        Users user = new Users();
-        model.addObject("user", user);
-        model.setViewName("SignUp");
-        return model;
-    }
-    
-    
-    /*
-    @RequestMapping(value = "/saveUser", method = RequestMethod.POST)
-    public ModelAndView saveUser(@ModelAttribute Users user) {
-        userService.addUser(user);
-        return new ModelAndView("redirect:/");
-    }*/
+   
     
     @RequestMapping(value = "/saveUser", method = RequestMethod.POST,  headers = "Accept=application/json")
-    public void addUser (@RequestBody Users user, @RequestBody Quiz quiz) {
+    public void addUser (@RequestBody Users user) {
         userService.addUser(user);
         
     }

@@ -18,4 +18,5 @@ public interface QuizService {
     public void addQuiz(Quiz quiz);
     public List<Quiz> getAllQuizzes();
     public void addQuestions(Quiz quiz, List<Quiz_question> question);
+    public List<Quiz_question> getQuizByTitle(String quiztitle);
 }
